@@ -16,7 +16,8 @@ namespace MVVMTest
 			TinyIoCContainer container = TinyIoC.TinyIoCContainer.Current;
 			
 			container.Register<IDispatchOnUIThread> (new Dispatcher (owner));			
-			container.Register(new DefaultViewModel (new User ("Frank", "Caico")), "DefaultViewModel");
+			container.Register (new DefaultViewModel (new User ("Frank", "Caico")), "DefaultViewModel");
+			container.Register (new ApplicationViewModel(), "ApplicationViewModel");
 		}			
 	}
 	

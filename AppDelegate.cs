@@ -9,6 +9,7 @@ using Pharos.MPS.Mobile.Client.Common.ViewModels;
 using Pharos.MPS.Mobile.Client.MVVM;
 using MVVMTest.Views;
 using TinyIoC;
+using TinyMessenger;
 
 namespace MVVMTest
 {
@@ -18,6 +19,8 @@ namespace MVVMTest
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
+		
+		
 		// class-level declarations
 		UIWindow window;
 
@@ -32,16 +35,21 @@ namespace MVVMTest
 		{
 			ContainerConfiguration.Configure (this);
 			
-			
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
 			// If you have defined a view, add it here:
 			// window.AddSubview (navigationController.View);
-			window.RootViewController = new DefatultController (TinyIoCContainer.Current.Resolve<DefaultViewModel>("DefaultViewModel"));
+			//window.RootViewController = new DefatultController (TinyIoCContainer.Current.Resolve<DefaultViewModel> ("DefaultViewModel"));
+			window.RootViewController = new ApplicationController (TinyIoCContainer.Current.Resolve<ApplicationViewModel> ("ApplicationViewModel"));
 	
+			ITinyMessengerHub messageHub = TinyIoCContainer.Current.Resolve<ITinyMessengerHub> ();
+			messageHub.Publish(new ApplicationStartingMessage());
+			
 			// make the window visible
 			window.MakeKeyAndVisible ();
+			
+			
 			
 			return true;
 		}

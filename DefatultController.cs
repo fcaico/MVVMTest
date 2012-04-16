@@ -83,7 +83,12 @@ namespace MVVMTest.Views
 		
 		partial void SetUsername (MonoTouch.Foundation.NSObject sender)
 		{
-			_viewModel.UsernameChanged.Execute(null);
+			_viewModel.UsernameChanged.Execute (null);
+		}
+		
+		partial void Finished (MonoTouch.Foundation.NSObject sender)
+		{
+			_viewModel.Finished.Execute(null);
 		}
 	}
 }

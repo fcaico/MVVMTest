@@ -8,6 +8,8 @@ using Pharos.MPS.Mobile.Client.MVVM;
 using Pharos.MPS.Mobile.Client.Common.Interfaces;
 using Pharos.MPS.Mobile.Client.Common.Model;
 using System.Timers;
+using TinyIoC;
+using TinyMessenger;
 
 namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 {
@@ -18,6 +20,7 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 		public const string UsernameProperty = "Username";
 		
 		private RelayCommand _setUsername;
+		private RelayCommand _finished;
 		private IUser _user;
         private readonly IDispatchOnUIThread _dispatcher;
 
@@ -60,22 +63,6 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 		}
 		
 		
-		public DefaultViewModel (IUser user)
-		{
-			_user = user;
-			_dispatcher = TinyIoC.TinyIoCContainer.Current.Resolve<Pharos.MPS.Mobile.Client.MVVM.IDispatchOnUIThread> ();
-			Timer t = new Timer (3000);
-			t.Elapsed += HandleTElapsed;
-			t.Start();
-		}
-
-		void HandleTElapsed (object sender, ElapsedEventArgs e)
-		{
-			_dispatcher.Invoke(() => { FirstName += "."; });
-		}
-
-		
-		
 		public RelayCommand UsernameChanged
 		{
 			get
@@ -88,9 +75,41 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 			}
 		}
 		
-		private void ResetUsername()
+		public RelayCommand Finished
 		{
-			RaisePropertyChanged(UsernameProperty);
+			get
+			{
+				if (_finished == null)
+				{
+					_finished = new RelayCommand (FinishedEditing);
+				}
+				return _finished;
+			}
+		}
+		
+		public DefaultViewModel (IUser user)
+		{
+			_user = user;
+			_dispatcher = TinyIoC.TinyIoCContainer.Current.Resolve<Pharos.MPS.Mobile.Client.MVVM.IDispatchOnUIThread> ();
+			Timer t = new Timer (3000);
+			t.Elapsed += TimerElapsed;
+			t.Start();
+		}
+
+		private void TimerElapsed (object sender, ElapsedEventArgs e)
+		{
+			_dispatcher.Invoke (() => {
+				FirstName += "."; });
+		}
+		
+		private void ResetUsername ()
+		{
+			RaisePropertyChanged (UsernameProperty);
+		}
+		
+		private void FinishedEditing()
+		{
+			TinyIoCContainer.Current.Resolve<ITinyMessengerHub> ().Publish (new DoneEditingUsername ());
 		}
 	}
 }

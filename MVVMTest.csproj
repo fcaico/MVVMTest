@@ -73,6 +73,15 @@
     </Compile>
     <Compile Include="ContainerConfiguration.cs" />
     <Compile Include="Views\BaseUIViewController.cs" />
+    <Compile Include="Views\ApplicationController.cs" />
+    <Compile Include="Views\ApplicationController.designer.cs">
+      <DependentUpon>ApplicationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BaseUINavigationController.cs" />
+    <Compile Include="Views\OperationStatusController.cs" />
+    <Compile Include="Views\OperationStatusController.designer.cs">
+      <DependentUpon>OperationStatusController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,5 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="DefatultController.xib" />
+    <InterfaceDefinition Include="Views\ApplicationController.xib" />
+    <InterfaceDefinition Include="Views\OperationStatusController.xib" />
   </ItemGroup>
 </Project>

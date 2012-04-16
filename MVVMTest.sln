@@ -77,6 +77,10 @@ Global
 		$5.WhileBraceForcement = AddBraces
 		$5.UsingBraceForcement = AddBraces
 		$5.FixedBraceForcement = AddBraces
+		$5.PlaceElseOnNewLine = True
+		$5.PlaceCatchOnNewLine = True
+		$5.PlaceFinallyOnNewLine = True
+		$5.PlaceWhileOnNewLine = True
 		$5.inheritsSet = Mono
 		$5.inheritsScope = text/x-csharp
 		$5.scope = text/x-csharp

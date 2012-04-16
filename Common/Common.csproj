@@ -40,6 +40,8 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
     <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\OperationStatusViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVVM\MVVM.csproj">
@@ -49,5 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
+    <Folder Include="New Folder\" />
   </ItemGroup>
 </Project>

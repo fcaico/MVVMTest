@@ -22,6 +22,9 @@ namespace MVVMTest.Views
 
 		[Action ("SetUsername:")]
 		partial void SetUsername (MonoTouch.Foundation.NSObject sender);
+
+		[Action ("Finished:")]
+		partial void Finished (MonoTouch.Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
