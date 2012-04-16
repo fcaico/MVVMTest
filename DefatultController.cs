@@ -7,30 +7,20 @@ using Pharos.MPS.Mobile.Client.Common.ViewModels;
 
 namespace MVVMTest.Views
 {
-	public partial class DefatultController : UIViewController
+	public partial class DefatultController : BaseUIViewController
 	{
 		DefaultViewModel _viewModel;
 		
-		public DefatultController (DefaultViewModel vm) : base ("DefatultController", null)
+		public DefatultController (DefaultViewModel vm) : base(vm, "DefatultController", null)
 		{
 			_viewModel = vm;
-			ListenForPropertyChanges(true);
+			ListenForPropertyChanges();
 		}
 		
-		void ListenForPropertyChanges (bool listen)
+		protected override void OnViewModelPropertyChanged (string propertyName)
 		{
-			if (listen)
-			{
-				_viewModel.PropertyChanged += Handle_viewModelPropertyChanged;
-			} else
-			{
-				_viewModel.PropertyChanged -= Handle_viewModelPropertyChanged;
-			}
-		}
-
-		void Handle_viewModelPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			switch (e.PropertyName)
+			base.OnViewModelPropertyChanged (propertyName);
+			switch (propertyName)
 			{
 				
 				case DefaultViewModel.FirstNameProperty:
@@ -45,15 +35,9 @@ namespace MVVMTest.Views
 					Username.Text = _viewModel.Username;
 					break;
 			}
+			
 		}
 		
-		public override void DidReceiveMemoryWarning ()
-		{
-			// Releases the view if it doesn't have a superview.
-			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
-		}
 		
 		public override void ViewDidLoad ()
 		{
@@ -74,33 +58,22 @@ namespace MVVMTest.Views
 
 		void HandleLastNameValueChanged (object sender, EventArgs e)
 		{
-			ListenForPropertyChanges (false);
 			// Tell the view model what the new value for the Last Name is
-			_viewModel.LastName = LastName.Text;
-			ListenForPropertyChanges(true);
-
+			DoWithoutTriggeringNotification (() => 
+			{
+				_viewModel.LastName = LastName.Text; 
+			});
 		}
 
 		void HandleFirstNameValueChanged (object sender, EventArgs e)
 		{
-			ListenForPropertyChanges (false);
 			// Tell the view model what the new value for the First Name is
-			_viewModel.FirstName = FirstName.Text;
-			ListenForPropertyChanges (true);
-
+			DoWithoutTriggeringNotification (() => 
+			{
+				_viewModel.FirstName = FirstName.Text; 
+			});
 		}
 		
-		public override void ViewDidUnload ()
-		{
-			base.ViewDidUnload ();
-			
-			// Clear any references to subviews of the main view in order to
-			// allow the Garbage Collector to collect them sooner.
-			//
-			// e.g. myOutlet.Dispose (); myOutlet = null;
-			
-			ReleaseDesignerOutlets ();
-		}
 		
 		public override bool ShouldAutorotateToInterfaceOrientation (UIInterfaceOrientation toInterfaceOrientation)
 		{

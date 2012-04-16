@@ -4,9 +4,12 @@ namespace Pharos.MPS.Mobile.Client.MVVM
 {    
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        
+		public event PropertyChangedEventHandler PropertyChanged;
        
-        protected virtual void RaisePropertyChanged(string propertyName)
+		
+
+		protected virtual void RaisePropertyChanged(string propertyName)
         {           
             var handler = PropertyChanged;
 

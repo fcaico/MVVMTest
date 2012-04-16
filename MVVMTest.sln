@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM", "MVVM\MVVM.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{36877DB9-2897-43A7-8930-1ECC4837385F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{F7D02767-D8FD-4AB7-92A1-15679B53ED98}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -41,14 +39,6 @@ Global
 		{D4B39077-F5F3-479E-B7A0-5A6B7DFD307B}.Release|iPhone.Build.0 = Release|Any CPU
 		{D4B39077-F5F3-479E-B7A0-5A6B7DFD307B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{D4B39077-F5F3-479E-B7A0-5A6B7DFD307B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Release|iPhone.Build.0 = Release|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{F7D02767-D8FD-4AB7-92A1-15679B53ED98}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = MVVMTest.csproj

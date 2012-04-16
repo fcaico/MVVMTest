@@ -4,7 +4,7 @@
 // 
 // 
 using System;
-using Pharos.MPS.Mobile.Client.Interfaces.Model;
+using Pharos.MPS.Mobile.Client.Common.Interfaces;
 
 namespace Pharos.MPS.Mobile.Client.Common.Model
 {

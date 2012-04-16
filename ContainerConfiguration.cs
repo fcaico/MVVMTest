@@ -1,5 +1,5 @@
 using System;
-using Pharos.MPS.Mobile.Client.Interfaces.Model;
+using Pharos.MPS.Mobile.Client.Common.Interfaces;
 using Pharos.MPS.Mobile.Client.Common.Model;
 using Pharos.MPS.Mobile.Client.Common.ViewModels;
 using Pharos.MPS.Mobile.Client.MVVM;
@@ -15,7 +15,8 @@ namespace MVVMTest
 		{
 			TinyIoCContainer container = TinyIoC.TinyIoCContainer.Current;
 			
-			container.Register<IDispatchOnUIThread> (new Dispatcher (owner));
+			container.Register<IDispatchOnUIThread> (new Dispatcher (owner));			
+			container.Register(new DefaultViewModel (new User ("Frank", "Caico")), "DefaultViewModel");
 		}			
 	}
 	

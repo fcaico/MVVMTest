@@ -4,8 +4,8 @@
 // 
 // 
 using System;
-using Pharos.MPS.Mobile.Client.Interfaces.Model;
 using Pharos.MPS.Mobile.Client.MVVM;
+using Pharos.MPS.Mobile.Client.Common.Interfaces;
 using Pharos.MPS.Mobile.Client.Common.Model;
 using System.Timers;
 
@@ -19,7 +19,8 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 		
 		private RelayCommand _setUsername;
 		private IUser _user;
-		
+        private readonly IDispatchOnUIThread _dispatcher;
+
 		public string FirstName
 		{ 
 			get
@@ -30,6 +31,7 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 			{
 				_user.FirstName = value;
 				RaisePropertyChanged (FirstNameProperty);
+				RaisePropertyChanged (UsernameProperty);
 			}
 			
 		}
@@ -45,6 +47,7 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 			{
 				_user.LastName = value;
 				RaisePropertyChanged (LastNameProperty);
+				RaisePropertyChanged (UsernameProperty);
 			}
 		}
 		
@@ -60,13 +63,15 @@ namespace Pharos.MPS.Mobile.Client.Common.ViewModels
 		public DefaultViewModel (IUser user)
 		{
 			_user = user;
+			_dispatcher = TinyIoC.TinyIoCContainer.Current.Resolve<Pharos.MPS.Mobile.Client.MVVM.IDispatchOnUIThread> ();
 			Timer t = new Timer (3000);
 			t.Elapsed += HandleTElapsed;
+			t.Start();
 		}
 
 		void HandleTElapsed (object sender, ElapsedEventArgs e)
 		{
-			IDispatchOnUIThread dispatcher = TinyIoC.TinyIoCContainer.Current.Resolve(IDispatchOnUIThread);
+			_dispatcher.Invoke(() => { FirstName += "."; });
 		}
 
 		

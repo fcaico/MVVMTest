@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Pharos.MPS.Mobile.Client.Common.Model;
 using Pharos.MPS.Mobile.Client.Common.ViewModels;
+using Pharos.MPS.Mobile.Client.MVVM;
 using MVVMTest.Views;
 using TinyIoC;
 
@@ -29,17 +30,16 @@ namespace MVVMTest
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			TinyIoCContainer container = TinyIoCContainer.Current;
-			User user = new User ("Frank", "Caico");
-			DefaultViewModel viewModel = new DefaultViewModel (user);
+			ContainerConfiguration.Configure (this);
+			
 			
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
 			// If you have defined a view, add it here:
 			// window.AddSubview (navigationController.View);
-			window.RootViewController = new DefatultController (viewModel);
-			
+			window.RootViewController = new DefatultController (TinyIoCContainer.Current.Resolve<DefaultViewModel>("DefaultViewModel"));
+	
 			// make the window visible
 			window.MakeKeyAndVisible ();
 			

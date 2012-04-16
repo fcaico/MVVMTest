@@ -39,15 +39,15 @@
   <ItemGroup>
     <Compile Include="Model\User.cs" />
     <Compile Include="ViewModels\DefaultViewModel.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVVM\MVVM.csproj">
       <Project>{D4B39077-F5F3-479E-B7A0-5A6B7DFD307B}</Project>
       <Name>MVVM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
-      <Project>{F7D02767-D8FD-4AB7-92A1-15679B53ED98}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>

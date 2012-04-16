@@ -72,6 +72,11 @@
       <DependentUpon>DefatultController.cs</DependentUpon>
     </Compile>
     <Compile Include="ContainerConfiguration.cs" />
+    <Compile Include="Views\BaseUIViewController.cs" />
+    <Compile Include="Views\Test.cs" />
+    <Compile Include="Views\Test.designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -86,12 +91,9 @@
       <Project>{36877DB9-2897-43A7-8930-1ECC4837385F}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="Interfaces\Interfaces.csproj">
-      <Project>{F7D02767-D8FD-4AB7-92A1-15679B53ED98}</Project>
-      <Name>Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="DefatultController.xib" />
+    <InterfaceDefinition Include="Views\Test.xib" />
   </ItemGroup>
 </Project>

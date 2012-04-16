@@ -5,7 +5,7 @@
 // 
 using System;
 
-namespace Pharos.MPS.Mobile.Client.Interfaces.Model
+namespace Pharos.MPS.Mobile.Client.Common.Interfaces
 {
 	public interface IUser
 	{
